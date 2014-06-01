@@ -1,12 +1,11 @@
 {
-  "name": "gulp-static-boilerplate",
+  "name": "gulp-starter",
   "version": "0.0.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {},
   "repository": {},
-  "author": "Charlton Roberts",
-  "license": "MIT",
+  "author": "Simon Wallstrom",
   "devDependencies": {
     "gulp": "~3.6.0",
     "gulp-sass": "^0.7.1",
