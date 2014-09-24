@@ -4,7 +4,9 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect'),
-    svgmin = require('gulp-svgmin')
+    svgmin = require('gulp-svgmin'),
+    ftp = require('gulp-ftp'),
+    ftpass = require('./ftpass.json')
 
 gulp.task('styles', function() {
     return gulp.src('src/sass/style.scss')
@@ -41,4 +43,11 @@ gulp.task('watch', function() {
     gulp.watch('src/images/*.svg', ['images']);
 });
 
+gulp.task('ftp', function () {
+    return gulp.src('build/**/*')
+        .pipe(ftp(ftpass.credentials));
+});
+
 gulp.task('default', ['styles', 'content', 'images', 'connect', 'watch']);
+
+gulp.task('deploy', ['ftp']);
