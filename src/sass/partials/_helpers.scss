@@ -1,0 +1,65 @@
+//
+// HELPERS
+//
+
+
+// -------------------------------------------------------------
+// # Layout
+// -------------------------------------------------------------
+
+.clearfix {
+    @extend clearfix;
+}
+
+.left {
+    float: left!important;
+}
+
+.right {
+    float: right!important;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+
+
+// -------------------------------------------------------------
+// # Typography
+// -------------------------------------------------------------
+
+.text-left {
+    text-align: left!important;
+}
+
+.text-right {
+    text-align: right!important;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
