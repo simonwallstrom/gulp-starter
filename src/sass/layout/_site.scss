@@ -1,0 +1,25 @@
+//
+// SITE
+//
+
+
+// -------------------------------------------------------------
+// # Site layout
+// -------------------------------------------------------------
+
+// Use a site wrapper?
+// In that case remove width declarations on .row
+
+// .site {
+//     width: $site-width;
+//     max-width: $site-max-width;
+//     @extend .center;
+// }
+
+.row {
+    width: $site-width;
+    max-width: $site-max-width;
+    @extend .center;
+    margin-bottom: $margin;
+    @include clearfix;
+}

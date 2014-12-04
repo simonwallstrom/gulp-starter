@@ -1,13 +1,13 @@
 {
-  "name": "gulp-starter",
+  "name": "simonwallstrom",
   "version": "0.0.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {},
   "repository": {},
-  "author": "Simon Wallstrom",
+  "author": "Simon Wallström",
   "devDependencies": {
-    "gulp": "~3.6.0",
+    "gulp": "3.8.5",
     "gulp-autoprefixer": "0.0.7",
     "gulp-connect": "^2.0.5",
     "gulp-ftp": "^1.0.1",

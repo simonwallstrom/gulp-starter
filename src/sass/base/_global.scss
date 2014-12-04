@@ -1,0 +1,44 @@
+//
+// BASE STYLES
+//
+
+
+// -------------------------------------------------------------
+// # General
+// -------------------------------------------------------------
+
+// Include border and padding in width
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: $font-size;
+    font-family: $sans;
+    line-height: $line-height; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+// Bg colors for grid display
+.grid-bg div {
+    background: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: $radius;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+
+    p {
+        margin: 0;
+    }
+}

@@ -7,8 +7,8 @@
 // # General
 // -------------------------------------------------------------
 
-$site-width:            90%;
-$site-max-width:        600px;
+$site-width:                80%;
+$site-max-width:            640px;
 
 
 // -------------------------------------------------------------
@@ -16,50 +16,51 @@ $site-max-width:        600px;
 // -------------------------------------------------------------
 
 // Fonts
-$sans:                  "Helvetica Neue";
-$serif:                 "Georgia";
-$mono:                  "Monaco";
+$sans:                      "Helvetica Neue";
+$serif:                     "Georgia";
+$mono:                      "Monaco";
 
 // Base
-$base-font-size:        1.5rem;
-$base-font-weight:      400;
-$base-line-height:      1.6;
+$font-size:                 1.6rem;
+$line-height:               1.6;
 
 // Other
-$font-regular:          400;
-$font-bold:             700;
-$letter-spacing:        1px;
-$line-height-small:     1.2;
+$font-size--large:          $font-size + .4;
+$font-size--small:          $font-size - .2;
+$regular:                   400;
+$bold:                      700;
+$letter-spacing:            1px;
 
 
 // -------------------------------------------------------------
 // # Colors
 // -------------------------------------------------------------
 
-$black:                 #333333;
-$white:                 #ffffff;
-$grey:                  #f5f5f5;
+$black:                     #2F2F2F;
+$grey:                      lighten($black, 35%);
+$white:                     #ffffff;
+
+$green:                     green;
 
 
 // -------------------------------------------------------------
 // # Layout
 // -------------------------------------------------------------
 
-$base-margin:           $base-font-size;
+$margin:               30px;
 
 
 // -------------------------------------------------------------
 // # Grid
 // -------------------------------------------------------------
 
-$totalColumns:          12;
-$columnWidth:           60px;
-$gutterWidth:           40px;
-$gridWidth:             $totalColumns * ($columnWidth + $gutterWidth);
+$grid-base-col-width:       60 !default;
+$grid-base-gutter-width:    50 !default;
+$grid-cols:                 12 !default;
 
 
 // -------------------------------------------------------------
 // # Miscellaneous
 // -------------------------------------------------------------
 
-$radius: 3px;
+$radius:                    3px;

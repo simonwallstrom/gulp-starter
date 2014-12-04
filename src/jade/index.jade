@@ -2,5 +2,273 @@ extends layouts/master
 
 block content
 
-    h1 Gulp Boilerplate
-    p This is a starter boilerplate with gulp, sass, autoprefixr, jade
+	.row
+		h1 The grid
+
+	.row.grid-bg
+		.col-12
+			p col-12
+
+	.row.grid-bg
+		.col-6
+			p col-6
+		.col-6
+			p col-6
+
+	.row.grid-bg
+		.col-4
+			p col-4
+		.col-4
+			p col-4
+		.col-4
+			p col-4
+
+	.row.grid-bg
+		.col-3
+			p col-3
+		.col-3
+			p col-3
+		.col-3
+			p col-3
+		.col-3
+			p col-3
+
+	.row
+		h1 Heading 1
+		h2 Heading 2
+		h3 Heading 3
+		h4 Heading 4
+		h5 Heading 5
+		hr
+
+		h1 Heading 1
+		p
+			| Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+		h2 Heading 2
+		p
+			| Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+		h3 Heading 3
+		p
+			| Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+		h4 Heading 4
+		p
+			| Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+		h5 Heading 5
+		p
+			| Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+		p
+			| Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
+		hr
+
+		p
+			| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem.
+		p
+			| Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor.
+		p
+			img(alt='Placeholder Image and Some Alt Text', src='http://placehold.it/800x300', title='A title element for this placeholder image.')
+		p
+			| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem.
+		blockquote
+			| &quot;This is a blockquote. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.&quot;
+
+		h3 Ordered List
+		ol
+			li List Item 1
+			|   
+			li List Item 2
+			|   
+			li List Item 3
+		h3 Unordered List
+		ul
+			li List Item 1
+			|   
+			li List Item 2
+			|   
+			li List Item 3
+		h3 Definition List
+		dl
+			dt Definition List Term 1
+			|   
+			dd This is a definition list description.
+			|   
+			dt Definition List Term 2
+			|   
+			dd This is a definition list description.
+			|   
+			dt Definition List Term 3
+			|   
+			dd This is a definition list description.
+		hr
+
+		table(cellspacing='0', cellpadding='0')
+			tr
+				th Table Header 1
+				th Table Header 2
+				th Table Header 3
+			|   
+			tr
+				td Division 1
+				td Division 2
+				td Division 3
+			|   
+			tr.even
+				td Division 1
+				td Division 2
+				td Division 3
+			|   
+			tr
+				td Division 1
+				td Division 2
+				td Division 3
+		hr
+
+		h2 Form Elements
+		form
+			p
+				label(for='text_field') Text Field:
+				br
+				|     
+				input#text_field(type='text')
+			|     
+			p
+				label(for='text_area') Text Area:
+				br
+				|     
+				textarea#text_area
+			|     
+			p
+				label(for='select_element') Select Element:
+				br
+				|       
+				select(name='select_element')
+					optgroup(label='Option Group 1')
+						option(value='1') Option 1
+						|         
+						option(value='2') Option 2
+						|         
+						option(value='3') Option 3
+					|       
+					optgroup(label='Option Group 2')
+						option(value='1') Option 1
+						|         
+						option(value='2') Option 2
+						|         
+						option(value='3') Option 3
+			|     
+			p
+				label(for='radio_buttons') Radio Buttons:
+				br
+				|       
+				input.radio(type='radio', name='radio_button', value='radio_1')
+				|  Radio 1
+				br
+				|       
+				input.radio(type='radio', name='radio_button', value='radio_2')
+				|  Radio 2
+				br
+				|       
+				input.radio(type='radio', name='radio_button', value='radio_3')
+				|  Radio 3
+				br
+			|     
+			p
+				label(for='checkboxes') Checkboxes:
+				br
+				|       
+				input.checkbox(type='checkbox', name='checkboxes', value='check_1')
+				|  Radio 1
+				br
+				|       
+				input.checkbox(type='checkbox', name='checkboxes', value='check_2')
+				|  Radio 2
+				br
+				|       
+				input.checkbox(type='checkbox', name='checkboxes', value='check_3')
+				|  Radio 3
+				br
+			|     
+			p
+				label(for='password') Password:
+				br
+				|       
+				input.password(type='password', name='password')
+			|     
+			p
+				label(for='file') File Input:
+				br
+				|       
+				input.file(type='file', name='file')
+			|     
+			h3 HTML5-specific Form Elements
+			|     
+			p
+				label(for='email') Email:
+				br
+				|       
+				input(type='email')
+			|     
+			p
+				label(for='url') URL:
+				br
+				|       
+				input(type='url')
+			|     
+			p
+				label(for='tel') Telephone:
+				br
+				|       
+				input(type='tel')
+			|     
+			p
+				label(for='number') Number:
+				br
+				|       
+				input(type='number', min='0', max='10', step='1', value='5')
+			|     
+			p
+				label(for='search') Search:
+				br
+				|       
+				input(type='search')
+			|     
+			p
+				label(for='date') Date:
+				br
+				|       
+				input(type='date')
+			|     
+			p
+				label(for='time') Time:
+				br
+				|       
+				input(type='time')
+			|     
+			p
+				label(for='color') Color:
+				br
+				|       
+				input(type='color')
+			|     
+			p
+				label(for='datalist') Datalist:
+				br
+				|       
+				input(list='browsers', name='browser', type='datalist')
+				|       
+				datalist#browsers
+					option(value='Internet Explorer')
+					option(value='Firefox')
+					option(value='Chrome')
+					option(value='Opera')
+					option(value='Safari')
+			|     
+			p
+				label(for='range') Range:
+				br
+				|       
+				input(type='range', name='points', min='1', max='10')
+			|     
+			p
+				input.button(type='reset', value='Clear')
+				|  
+				input.button(type='submit', value='Submit')

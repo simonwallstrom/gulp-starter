@@ -6,28 +6,28 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     svgmin = require('gulp-svgmin'),
     ftp = require('gulp-ftp'),
-    ftpass = require('./ftpass.json')
+    ftpass = require('./ftpass.json');
 
 gulp.task('styles', function() {
-    return gulp.src('src/sass/style.scss')
+    return gulp.src('src/sass/app.scss')
         .pipe(sass({ style: 'expanded' }))
         .pipe(autoprefixer('last 2 version'))
         .pipe(gulp.dest('build/css'))
-        .pipe(connect.reload())
+        .pipe(connect.reload());
 });
 
 gulp.task('content', function() {
     gulp.src(['src/jade/**/*.jade', '!src/jade/layouts/**'])
         .pipe(jade({ pretty: true }))
         .pipe(gulp.dest('build'))
-        .pipe(connect.reload())
+        .pipe(connect.reload());
 });
 
 gulp.task('images', function() {
     return gulp.src('src/images/*.svg')
         .pipe(svgmin())
         .pipe(gulp.dest('build/images'))
-        .pipe(connect.reload())
+        .pipe(connect.reload());
 });
 
 gulp.task('connect', function() {
