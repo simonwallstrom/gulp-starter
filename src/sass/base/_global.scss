@@ -22,6 +22,11 @@ body {
     font-size: $font-size;
     font-family: $sans;
     line-height: $line-height; 
+
+    background: red;
+
+    @include bp(medium) { background: blue; }
+    @include bp(large) { background: green; }
 }
 
 img {

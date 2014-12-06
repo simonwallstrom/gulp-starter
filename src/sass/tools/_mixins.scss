@@ -9,14 +9,11 @@
 
 // @include bp(medium) { property: value; }
 @mixin bp($point) {
-    @if $point == large {
-        @media (max-width: 1600px) { @content; }
+    @if $point == medium {
+        @media (min-width: $bp-medium) { @content; }
     }
-    @else if $point == medium {
-        @media (max-width: 1250px) { @content; }
-    }
-    @else if $point == small {
-        @media (max-width: 650px)  { @content; }
+    @else if $point == large {
+        @media (min-width: $bp-large) { @content; }
     }
 }
 

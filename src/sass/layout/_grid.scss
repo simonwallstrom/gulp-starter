@@ -22,21 +22,25 @@ $grid-gutter-width:         percentage($grid-base-gutter-width / $grid-base-oute
     width: ($grid-col-width + $grid-gutter-width) * $cols - $grid-gutter-width;
 }
 
-// Generate classes for each col
-// eg: .col-4
-@for $i from 1 to ($grid-cols + 1) {
-    .col-#{$i}{
-        @include col($i);
+// Include grid on medium screens and up
+@include bp(medium) {
+    
+    // Generate classes for each col
+    // eg: .col-4
+    @for $i from 1 to ($grid-cols + 1) {
+        .col-#{$i}{
+            @include col($i);
+        }
     }
-}
 
-[class*='col-'] {
-    margin-right: $grid-gutter-width;
-    float: left;
-}
+    [class*='col-'] {
+        margin-right: $grid-gutter-width;
+        float: left;
+    }
 
-[class*='col-']:last-child {
-    margin-right: 0;
+    [class*='col-']:last-child {
+        margin-right: 0;
+    }
 }
 
 
@@ -48,9 +52,12 @@ $grid-gutter-width:         percentage($grid-base-gutter-width / $grid-base-oute
     margin-left: ($grid-col-width + $grid-gutter-width) * $offsets;
 }
 
-@for $i from 1 to ($grid-cols + 1) {
-    .offset-#{$i}{
-        @include offset($i);
+@include bp(medium) {
+
+    @for $i from 1 to ($grid-cols + 1) {
+        .offset-#{$i}{
+            @include offset($i);
+        }
     }
 }
 
@@ -59,61 +66,13 @@ $grid-gutter-width:         percentage($grid-base-gutter-width / $grid-base-oute
 // # Media query specific grid
 // -------------------------------------------------------------
 
-// Tablet = 768px to 1023px
+// Medium = 768px to 1023px
 // eg: .col-4-t
-@include bp(tablet) {
+// @include bp(medium) {
 
-    @for $i from 1 to ($grid-cols + 1) {
-        .col-#{$i}-t{
-            @include col($i);
-        }
-    }
-}
-
-// Desktop = 1024px and up
-// eg: .col-4-d
-@include bp(desktop) {
-
-    @for $i from 1 to ($grid-cols + 1) {
-        .col-#{$i}-d{
-            @include col($i);
-        }
-    }
-}
-
-// Wide = 1240px and up
-// eg: .col-4-w
-@include bp(wide) {
-
-    @for $i from 1 to ($grid-cols + 1) {
-        .col-#{$i}-w{
-            @include col($i);
-        }
-    }
-}
-
-
-// -------------------------------------------------------------
-// # Multirow columns without .row
-// -------------------------------------------------------------
-
-@include bp(phablet-only) {
-
-    .col-6-p:nth-child(even),
-    .col-3-p:nth-child(4n+4),
-    .col-4-p:nth-child(3n+3) { margin-right: 0; }
-}
-
-@include bp(tablet-only) {
-
-    .col-6-t:nth-child(even),
-    .col-3-t:nth-child(4n+4),
-    .col-4-t:nth-child(3n+3) { margin-right: 0; }
-}
- 
-@include bp(desktop-only) {
-
-    .col-6-d:nth-child(even),
-    .col-3-d:nth-child(4n+4),
-    .col-4-d:nth-child(3n+3) { margin-right: 0; }
-}
+//     @for $i from 1 to ($grid-cols + 1) {
+//         .col-#{$i}-m{
+//             @include col($i);
+//         }
+//     }
+// }
