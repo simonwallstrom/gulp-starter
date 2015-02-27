@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="616px" height="424px" viewBox="0 0 616 424" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Dark Code Editor Window</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Dark-Code-Editor-Window" sketch:type="MSArtboardGroup">
+            <g sketch:type="MSLayerGroup">
+                <g id="Base-+-Header">
+                    <rect id="Base" fill="#353B46" sketch:type="MSShapeGroup" x="0" y="16" width="616" height="408" rx="5"></rect>
+                    <g id="Header">
+                        <path d="M5.00363082,0 C2.24020182,0 0,2.22944355 0,4.99790202 L0,31 L616,31 L616,4.99790202 C616,2.23763695 613.769475,0 610.996369,0 L5.00363082,0 Z" id="Base" fill="#EEF1F5" sketch:type="MSShapeGroup"></path>
+                        <g id="Options" transform="translate(9.000000, 9.000000)" sketch:type="MSShapeGroup">
+                            <circle id="Icon" fill="#EF534A" cx="5.5" cy="5.5" r="5.5"></circle>
+                            <circle id="Icon" fill="#EEC04A" cx="24.5" cy="5.5" r="5.5"></circle>
+                            <circle id="Icon" fill="#97D272" cx="43.5" cy="5.5" r="5.5"></circle>
+                        </g>
+                        <text id="Window-Title" opacity="0.85" sketch:type="MSTextLayer" font-family=".Helvetica Neue DeskInterface" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#525355">
+                            <tspan x="268.208333" y="23">Window Title</tspan>
+                        </text>
+                    </g>
+                </g>
+                <text id="Line-Numbers" opacity="0.8" sketch:type="MSTextLayer" font-family="Andale Mono" font-size="14" font-weight="normal" sketch:alignment="right" fill="#858585">
+                    <tspan x="20.5986328" y="54">1</tspan>
+                    <tspan x="20.5986328" y="74">2</tspan>
+                    <tspan x="20.5986328" y="94">3</tspan>
+                    <tspan x="20.5986328" y="114">4</tspan>
+                    <tspan x="20.5986328" y="134">5</tspan>
+                    <tspan x="20.5986328" y="154">6</tspan>
+                    <tspan x="20.5986328" y="174">7</tspan>
+                    <tspan x="20.5986328" y="194">8</tspan>
+                    <tspan x="20.5986328" y="214">9</tspan>
+                    <tspan x="12.1972656" y="234">10</tspan>
+                </text>
+                <text id="Code" sketch:type="MSTextLayer" font-family="Andale Mono" font-size="14" font-weight="normal" fill="#E2E7ED">
+                    <tspan x="43" y="54">&lt;!doctype html&gt;</tspan>
+                    <tspan x="43" y="74">&lt;html lang="en"&gt;</tspan>
+                    <tspan x="43" y="94">&lt;head&gt;</tspan>
+                    <tspan x="43" y="114">	&lt;meta charset=“UTF-8”&gt;</tspan>
+                    <tspan x="43" y="134">	&lt;title&gt;Document&lt;/title&gt;</tspan>
+                    <tspan x="43" y="154">&lt;/head&gt;</tspan>
+                    <tspan x="43" y="174">&lt;body&gt;</tspan>
+                    <tspan x="43" y="194">&lt;/body&gt;</tspan>
+                    <tspan x="43" y="214">&lt;/html&gt;</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

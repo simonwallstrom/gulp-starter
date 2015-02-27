@@ -18,15 +18,10 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 100px;
     font-size: $font-size;
     font-family: $sans;
-    line-height: $line-height; 
-
-    background: red;
-
-    @include bp(medium) { background: blue; }
-    @include bp(large) { background: green; }
+    line-height: $line-height;
 }
 
 img {
