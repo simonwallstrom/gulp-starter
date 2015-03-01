@@ -1,2 +1,2 @@
 var $ = require('jquery');
-$('body').css('background', 'red');
+$('body').css('background', 'blue');
