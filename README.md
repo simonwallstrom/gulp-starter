@@ -1,6 +1,6 @@
 # Gulp boilerplate
 
-Gulp, Jade, Sass, Autoprefixr, Browserify, JSHint, Imagemin, Dev/Prod env, deploy to gh-pages
+A basic boilerplate to start quickly on a static site and deploy to gh-pages.
 
 ## Features
 
