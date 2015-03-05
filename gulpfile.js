@@ -2,8 +2,10 @@
 // GULPFILE
 //
 
+
+// TASKS
 // 1. `gulp` - Default task to build and run server
-// 2. `gulp --prod` - Minify everything to get ready for deploy
+// 2. `gulp prod` - Minify everything to get ready for deploy
 // 3. `gulp deploy` - Deploy to gh-pages
 
 // -------------------------------------------------------------
@@ -12,20 +14,25 @@
 
 var gulp            = require('gulp'),
     jade            = require('gulp-jade'),
+    marked          = require('marked'),
     sass            = require('gulp-sass'),
+    scsslint        = require('gulp-scss-lint'),
     autoprefixer    = require('gulp-autoprefixer'),
+    minifyCSS       = require('gulp-minify-css'),
     js              = require('browserify'),
     uglify          = require('gulp-uglify'),
     jshint          = require('gulp-jshint'),
     source          = require('vinyl-source-stream'),
     buffer          = require('vinyl-buffer'),
     imagemin        = require('gulp-imagemin'),
-    livereload      = require('gulp-livereload'),
-    connect         = require('gulp-connect'),
+    changed         = require('gulp-changed'),
+    browserSync     = require('browser-sync'),
     gutil           = require("gulp-util"),
     notify          = require("gulp-notify"),
     del             = require('del'),
-    runSequence     = require('run-sequence');
+    sizereport      = require('gulp-sizereport'),
+    runSequence     = require('run-sequence'),
+    deploy          = require('gulp-gh-pages');
 
 
 // -------------------------------------------------------------
@@ -51,17 +58,6 @@ var dest = {
     img:    basePath.dest + 'img/'
 };
 
-// Production setup
-var isProd = false;
-var jadePretty = true;
-var sassStyle = 'expanded';
-
-if(gutil.env.prod === true) {
-    isProd = true;
-    jadePretty = false;
-    sassStyle = 'compressed';
-}
-
 // Deploy
 var deploy = {
     path: basePath.dest + '**/*.*',
@@ -84,11 +80,12 @@ var handleError = function(err) {
 gulp.task('jade', function() {
     return gulp.src(src.jade)
         .pipe(jade({
-            pretty: jadePretty
+            pretty: false
         }))
         .on('error', handleError)
         .pipe(gulp.dest(dest.jade))
-        .pipe(connect.reload());
+        // .pipe(connect.reload());
+        .pipe(browserSync.reload({stream:true}));
 });
 
 
@@ -96,16 +93,28 @@ gulp.task('jade', function() {
 // # SASS
 // -------------------------------------------------------------
 
+gulp.task('scss-lint', function() {
+  gulp.src(src.sass + '**/*')
+    .pipe(scsslint());
+});
+
 gulp.task('sass', function() {
     return gulp.src(src.sass + 'app.scss')
         .pipe(sass({
-            outputStyle: sassStyle,
+            outputStyle: 'expanded',
             errLogToConsole: true,
             // onError: handleError // Broken in latest gulp-sass
         }))
         .pipe(autoprefixer('last 2 version'))
         .pipe(gulp.dest(dest.sass))
-        .pipe(connect.reload());
+        .pipe(browserSync.reload({stream:true}));
+        // .pipe(connect.reload());
+});
+
+gulp.task('sassProd', ['sass'], function() {
+    return gulp.src(dest.sass + 'app.css')
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(dest.sass));
 });
 
 
@@ -127,9 +136,14 @@ gulp.task('js', function() {
         .bundle()
         .pipe(source('app.js'))
         .pipe(buffer())
-        .pipe(isProd ? uglify() : gutil.noop())
         .pipe(gulp.dest(dest.js))
-        .pipe(connect.reload());
+        .pipe(browserSync.reload({stream:true}));
+});
+
+gulp.task('jsProd', ['jshint', 'js'], function() {
+    return gulp.src(dest.js + 'app.js')
+        .pipe(uglify())
+        .pipe(gulp.dest(dest.js));
 });
 
 
@@ -138,8 +152,8 @@ gulp.task('js', function() {
 // -------------------------------------------------------------
 
 gulp.task('img', function () {
-    console.log(src.sass + '**/*.scss');
     return gulp.src(src.img)
+        .pipe(changed(dest.img))
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}]
@@ -149,13 +163,16 @@ gulp.task('img', function () {
 
 
 // -------------------------------------------------------------
-// # Server
+// # BrowserSync
 // -------------------------------------------------------------
 
-gulp.task('connect', function() {
-    connect.server({
-        root: basePath.dest,
-        livereload: true
+gulp.task('browserSync', function() {
+    browserSync({
+        server: {
+            baseDir: basePath.dest,
+        },
+        notify: false,
+        open: false
     });
 });
 
@@ -164,11 +181,10 @@ gulp.task('connect', function() {
 // # Watch
 // -------------------------------------------------------------
 
-gulp.task('watch', function() {
+gulp.task('watch', ['browserSync'], function(callback) {
     gulp.watch(src.sass + '**/*.scss', ['sass']);
     gulp.watch(src.js + '**/*.js', ['jshint' ,'js']);
     gulp.watch(src.jade, ['jade']);
-    gulp.watch(src.img + '*', ['img']);
 });
 
 
@@ -182,11 +198,47 @@ gulp.task('clean', function (cb) {
 
 
 // -------------------------------------------------------------
+// # Report
+// -------------------------------------------------------------
+
+gulp.task('report', ['jade', 'sassProd', 'jsProd', 'img'], function () {
+    return gulp.src(basePath.dest + '**/*')
+        .pipe(sizereport());
+});
+
+// -------------------------------------------------------------
 // # Default task - run `gulp`
 // -------------------------------------------------------------
 
 gulp.task('default', ['clean'], function (cb) {
-    runSequence(['jade', 'sass', 'jshint', 'js', 'img', 'connect', 'watch'], cb);
+    runSequence([
+        'jade',
+        'scss-lint',
+        'sass',
+        'jshint',
+        'js',
+        'img',
+        'browserSync',
+        'watch'
+    ], cb);
+});
+
+
+// -------------------------------------------------------------
+// # Production task - run `gulp prod`
+// -------------------------------------------------------------
+
+gulp.task('prod', ['clean'], function (cb) {
+    runSequence([
+        'jade',
+        'sassProd',
+        'jsProd',
+        'img',
+        'browserSync',
+        'report'
+    ], function() {
+        console.log(cb);
+    });
 });
 
 
