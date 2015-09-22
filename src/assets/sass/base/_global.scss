@@ -12,18 +12,25 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 62.5%;
-    text-size-adjust: 100%;
-}
-
 body {
-    font-size: $font-size;
+    font-size: $font-size--small;
     font-family: $sans;
     line-height: $line-height;
+    color: $black;
+
+    @include bp(md) {
+        font-size: $font-size;
+    }
 }
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+ul,
+ol {
+    padding: 0;
+    list-style-position: inside;
+    margin: $margin 0;
 }

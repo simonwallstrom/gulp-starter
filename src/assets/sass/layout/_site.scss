@@ -16,10 +16,21 @@
 //     @extend .center;
 // }
 
-.row {
+.wrap {
     width: $site-width;
     max-width: $site-max-width;
     @extend .center;
-    margin-bottom: $margin;
+}
+
+.row {
     @include clearfix;
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+}
+
+.box {
+    height: 200px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: $gutter;
 }

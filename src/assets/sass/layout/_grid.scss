@@ -2,14 +2,59 @@
 // GRID
 //
 
-@include bp(xs) {
 
-    @for $i from 1 through $cols {
+[class*="col-"] {
+    padding: 0 $gutter;
+}
 
-        .col-#{$i}--xs {
-            width: 100% / $cols * $i;
-        }
-
+@include bp(sm) {
+    [class*="--sm"] {
+        float: left;
+        padding: 0 $gutter;
     }
 
+    @for $i from 1 through $cols {
+        .col-#{$i}--sm {
+            width: 100% / $cols * $i;
+        }
+    }
+}
+
+@include bp(md) {
+    [class$="--md"] {
+        float: left;
+        padding: 0 $gutter;
+    }
+
+    @for $i from 1 through $cols {
+        .col-#{$i}--md {
+            width: 100% / $cols * $i;
+        }
+    }
+}
+
+@include bp(lg) {
+    [class$="--lg"] {
+        float: left;
+        padding: 0 $gutter;
+    }
+
+    @for $i from 1 through $cols {
+        .col-#{$i}--lg {
+            width: 100% / $cols * $i;
+        }
+    }
+}
+
+@include bp(xl) {
+    [class$="--xl"] {
+        float: left;
+        padding: 0 $gutter;
+    }
+
+    @for $i from 1 through $cols {
+        .col-#{$i}--xl {
+            width: 100% / $cols * $i;
+        }
+    }
 }

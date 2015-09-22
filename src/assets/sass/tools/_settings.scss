@@ -17,8 +17,8 @@ $font-size:                 16px;
 $line-height:               1.6;
 
 // Other
-$font-size--large:          $font-size + .2;
-$font-size--small:          $font-size - .2;
+$font-size--large:          $font-size + 2;
+$font-size--small:          $font-size - 2;
 $regular:                   400;
 $bold:                      700;
 $letter-spacing:            1px;
@@ -29,18 +29,18 @@ $letter-spacing:            1px;
 // -------------------------------------------------------------
 
 // Site
-$site-width:                80%;
-$site-max-width:            1140px;
+$site-width:                90%;
+$site-max-width:            740px;
 
 // Grid
-$cols: 12;
+$cols:                      12;
+$gutter:                    20px;
 
 // Breakpoints
-$bp-xs:                     400px;
-$bp-sm:                     700px;
-$bp-md:                     1000px;
-$bp-lg:                     1300px;
-$bp-xl:                     1600px;
+$bp-sm:                     420px;
+$bp-md:                     700px;
+$bp-lg:                     1000px;
+$bp-xl:                     1300px;
 
 // Default spacing
 $margin:                    $font-size;

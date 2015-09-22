@@ -14,12 +14,11 @@
 
 var gulp            = require('gulp'),
     jade            = require('gulp-jade'),
-    marked          = require('marked'),
     sass            = require('gulp-sass'),
     autoprefixer    = require('gulp-autoprefixer'),
     minifyCSS       = require('gulp-minify-css'),
-    js              = require('browserify'),
     uglify          = require('gulp-uglify'),
+    concat          = require('gulp-concat');
     jshint          = require('gulp-jshint'),
     source          = require('vinyl-source-stream'),
     buffer          = require('vinyl-buffer'),
@@ -47,7 +46,8 @@ var src = {
     jade:   [basePath.src + 'jade/**/*.jade', '!' + basePath.src + 'jade/layouts/**'],
     sass:   basePath.src + 'assets/sass/',
     js:     basePath.src + 'assets/js/',
-    img:    basePath.src + 'assets/img/*'
+    img:    basePath.src + 'assets/img/*',
+    bower:  './bower_components/'
 };
 
 var dest = {
@@ -102,7 +102,6 @@ gulp.task('sass', function() {
         .pipe(autoprefixer('last 2 version'))
         .pipe(gulp.dest(dest.sass))
         .pipe(browserSync.reload({stream:true}));
-        // .pipe(connect.reload());
 });
 
 gulp.task('sassProd', ['sass'], function() {
@@ -116,7 +115,25 @@ gulp.task('sassProd', ['sass'], function() {
 // # JS
 // -------------------------------------------------------------
 
-// Coming soon
+gulp.task('jshint', function () {
+    gulp.src([src.js + '*.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'))
+        .on('error', handleError);
+
+});
+
+gulp.task('js', function() {
+    return gulp.src([
+        src.bower + 'jquery/dist/jquery.min.js',
+        src.js + 'app.js',
+        src.js + 'lib.js'
+    ])
+    .pipe(concat('app.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(dest.js));
+});
 
 
 // -------------------------------------------------------------
@@ -164,8 +181,8 @@ gulp.task('watch', ['browserSync'], function(callback) {
 // # Clean
 // -------------------------------------------------------------
 
-gulp.task('clean', function (cb) {
-    del(basePath.dest + '**', cb);
+gulp.task('clean', function () {
+    return del(basePath.dest + '**');
 });
 
 
@@ -182,10 +199,12 @@ gulp.task('report', ['jade', 'sassProd', 'jsProd', 'img'], function () {
 // # Default task - run `gulp`
 // -------------------------------------------------------------
 
-gulp.task('default', function (cb) {
+gulp.task('default', ['clean'], function (cb) {
     runSequence([
         'jade',
         'sass',
+        'jshint',
+        'js',
         'img',
         'browserSync',
         'watch'

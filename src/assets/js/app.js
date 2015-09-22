@@ -1,2 +1,2 @@
-var $ = require('jquery');
+console.log('Hej ');
 $('body').css('background', '#fafafa');
