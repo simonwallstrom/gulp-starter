@@ -2,77 +2,14 @@
 // GRID
 //
 
+@include bp(xs) {
 
-// -------------------------------------------------------------
-// # Variables - To alter grid see settings.scss
-// -------------------------------------------------------------
+    @for $i from 1 through $cols {
 
-$grid-base-outer-width:     (($grid-base-col-width * $grid-cols) + ($grid-base-gutter-width * ($grid-cols - 1)));
-$grid-col-width:            percentage($grid-base-col-width / $grid-base-outer-width);
-$grid-gutter-width:         percentage($grid-base-gutter-width / $grid-base-outer-width);
-
-
-// -------------------------------------------------------------
-// # Standard grid
-// -------------------------------------------------------------
-
-// Columns mixin
-// Used in loop to create classes
-@mixin col($cols) {
-    width: ($grid-col-width + $grid-gutter-width) * $cols - $grid-gutter-width;
-}
-
-// Include grid on medium screens and up
-@include bp(medium) {
-    
-    // Generate classes for each col
-    // eg: .col-4
-    @for $i from 1 to ($grid-cols + 1) {
-        .col-#{$i}{
-            @include col($i);
+        .col-#{$i}--xs {
+            width: 100% / $cols * $i;
         }
+
     }
 
-    [class*='col-'] {
-        margin-right: $grid-gutter-width;
-        float: left;
-    }
-
-    [class*='col-']:last-child {
-        margin-right: 0;
-    }
 }
-
-
-// -------------------------------------------------------------
-// # Offsets
-// -------------------------------------------------------------
-
-@mixin offset($offsets) {
-    margin-left: ($grid-col-width + $grid-gutter-width) * $offsets;
-}
-
-@include bp(medium) {
-
-    @for $i from 1 to ($grid-cols + 1) {
-        .offset-#{$i}{
-            @include offset($i);
-        }
-    }
-}
-
-
-// -------------------------------------------------------------
-// # Media query specific grid
-// -------------------------------------------------------------
-
-// Medium = 768px to 1023px
-// eg: .col-4-t
-// @include bp(medium) {
-
-//     @for $i from 1 to ($grid-cols + 1) {
-//         .col-#{$i}-m{
-//             @include col($i);
-//         }
-//     }
-// }

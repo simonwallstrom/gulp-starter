@@ -16,7 +16,6 @@ var gulp            = require('gulp'),
     jade            = require('gulp-jade'),
     marked          = require('marked'),
     sass            = require('gulp-sass'),
-    scsslint        = require('gulp-scss-lint'),
     autoprefixer    = require('gulp-autoprefixer'),
     minifyCSS       = require('gulp-minify-css'),
     js              = require('browserify'),
@@ -93,11 +92,6 @@ gulp.task('jade', function() {
 // # SASS
 // -------------------------------------------------------------
 
-gulp.task('scss-lint', function() {
-  gulp.src(src.sass + '**/*')
-    .pipe(scsslint());
-});
-
 gulp.task('sass', function() {
     return gulp.src(src.sass + 'app.scss')
         .pipe(sass({
@@ -122,29 +116,7 @@ gulp.task('sassProd', ['sass'], function() {
 // # JS
 // -------------------------------------------------------------
 
-gulp.task('jshint', function () {
-    gulp.src([src.js + 'app.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(jshint.reporter('fail'))
-        .on('error', handleError);
-
-});
-
-gulp.task('js', function() {
-    return js(src.js + 'app.js')
-        .bundle()
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(gulp.dest(dest.js))
-        .pipe(browserSync.reload({stream:true}));
-});
-
-gulp.task('jsProd', ['jshint', 'js'], function() {
-    return gulp.src(dest.js + 'app.js')
-        .pipe(uglify())
-        .pipe(gulp.dest(dest.js));
-});
+// Coming soon
 
 
 // -------------------------------------------------------------
@@ -210,13 +182,10 @@ gulp.task('report', ['jade', 'sassProd', 'jsProd', 'img'], function () {
 // # Default task - run `gulp`
 // -------------------------------------------------------------
 
-gulp.task('default', ['clean'], function (cb) {
+gulp.task('default', function (cb) {
     runSequence([
         'jade',
-        'scss-lint',
         'sass',
-        'jshint',
-        'js',
         'img',
         'browserSync',
         'watch'
@@ -232,7 +201,6 @@ gulp.task('prod', ['clean'], function (cb) {
     runSequence([
         'jade',
         'sassProd',
-        'jsProd',
         'img',
         'browserSync',
         'report'

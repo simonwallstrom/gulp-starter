@@ -9,11 +9,20 @@
 
 // @include bp(medium) { property: value; }
 @mixin bp($point) {
-    @if $point == medium {
-        @media (min-width: $bp-medium) { @content; }
+    @if $point == xs {
+        @media (min-width: $bp-xs) { @content; }
     }
-    @else if $point == large {
-        @media (min-width: $bp-large) { @content; }
+    @else if $point == sm {
+        @media (min-width: $bp-sm) { @content; }
+    }
+    @else if $point == md {
+        @media (min-width: $bp-md) { @content; }
+    }
+    @else if $point == lg {
+        @media (min-width: $bp-lg) { @content; }
+    }
+    @else if $point == xl {
+        @media (min-width: $bp-xl) { @content; }
     }
 }
 
@@ -63,7 +72,7 @@
 // -------------------------------------------------------------
 
 @mixin css-arrow($arrow-position, $arrow-color, $arrow-size) {
-    
+
     &:after {
         position: absolute;
         border: solid transparent;
@@ -79,7 +88,7 @@
     }
 
     @if $arrow-position == "top" {
-        
+
         &:after {
             bottom: 100%;
             border-bottom-color: $arrow-color;
@@ -87,9 +96,9 @@
             left: 50%;
         }
     }
-    
+
     @if $arrow-position == "right" {
-        
+
         &:after {
             left: 100%;
             border-left-color: $arrow-color;
@@ -97,9 +106,9 @@
             top: 50%;
         }
     }
-    
+
     @if $arrow-position == "bottom" {
-      
+
         &:after {
             top: 100%;
             border-top-color: $arrow-color;
@@ -107,9 +116,9 @@
             left: 50%;
         }
     }
-    
+
     @if $arrow-position == "left" {
-        
+
         &:after {
             right: 100%;
             border-right-color: $arrow-color;
