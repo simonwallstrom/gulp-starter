@@ -15,13 +15,12 @@
 var gulp            = require('gulp'),
     nunjucks        = require('gulp-nunjucks-html');
     sass            = require('gulp-sass'),
+    scssLint        = require('gulp-scss-lint'),
     autoprefixer    = require('gulp-autoprefixer'),
     minifyCSS       = require('gulp-minify-css'),
     uglify          = require('gulp-uglify'),
     concat          = require('gulp-concat');
     jshint          = require('gulp-jshint'),
-    source          = require('vinyl-source-stream'),
-    buffer          = require('vinyl-buffer'),
     imagemin        = require('gulp-imagemin'),
     changed         = require('gulp-changed'),
     browserSync     = require('browser-sync'),
@@ -81,13 +80,22 @@ gulp.task('html', function() {
         .pipe(nunjucks({
             searchPaths: ['./src/html']
         }))
-        .pipe(gulp.dest(dest.html));
+        .pipe(gulp.dest(dest.html))
+        .pipe(browserSync.reload({stream:true}));
 });
 
 
 // -------------------------------------------------------------
 // # SASS
 // -------------------------------------------------------------
+
+gulp.task('scss-lint', function() {
+    return gulp.src(src.sass + '**/*')
+        // .pipe(cache('scsslint'))
+        .pipe(scssLint({'config': '.scss-lint.yml'}))
+        .pipe(scssLint.failReporter('E'))
+        .on('error', handleError);
+});
 
 gulp.task('sass', function() {
     return gulp.src(src.sass + 'app.scss')
@@ -129,7 +137,8 @@ gulp.task('js', function() {
     ])
     .pipe(concat('app.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(dest.js));
+    .pipe(gulp.dest(dest.js))
+    .pipe(browserSync.reload({stream:true}));
 });
 
 
@@ -169,7 +178,7 @@ gulp.task('browserSync', function() {
 
 gulp.task('watch', ['browserSync'], function(callback) {
     gulp.watch(src.sass + '**/*.scss', ['sass']);
-    gulp.watch(src.js + '**/*.js', ['jshint' ,'js']);
+    gulp.watch(src.js + '*.js', ['jshint' ,'js']);
     gulp.watch(src.html, ['html']);
 });
 

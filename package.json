@@ -8,7 +8,6 @@
   "author": "Simon Wallström",
   "devDependencies": {
     "browser-sync": "^2.9.5",
-    "browserify": "^11.1.0",
     "del": "^2.0.2",
     "gulp": "*",
     "gulp-autoprefixer": "^3.0.1",
@@ -26,9 +25,7 @@
     "gulp-uglify": "*",
     "gulp-util": "*",
     "jshint-stylish": "^2.0.1",
-    "run-sequence": "*",
-    "vinyl-buffer": "*",
-    "vinyl-source-stream": "*"
+    "run-sequence": "*"
   },
   "dependencies": {
     "jquery": "^2.1.3"
