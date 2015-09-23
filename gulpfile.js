@@ -13,7 +13,7 @@
 // -------------------------------------------------------------
 
 var gulp            = require('gulp'),
-    nunjucks        = require('gulp-nunjucks-html');
+    nunjucks        = require('gulp-nunjucks-html'),
     sass            = require('gulp-sass'),
     scssLint        = require('gulp-scss-lint'),
     autoprefixer    = require('gulp-autoprefixer'),
@@ -90,7 +90,7 @@ gulp.task('html', function() {
 // -------------------------------------------------------------
 
 gulp.task('scss-lint', function() {
-    return gulp.src(src.sass + '**/*')
+    return gulp.src([src.sass + '**/*', '!' + src.sass + '/base/_normalize.scss'])
         // .pipe(cache('scsslint'))
         .pipe(scssLint({'config': '.scss-lint.yml'}))
         .pipe(scssLint.failReporter('E'))
