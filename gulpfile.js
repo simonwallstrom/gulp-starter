@@ -14,6 +14,7 @@
 
 var gulp            = require('gulp'),
     jade            = require('gulp-jade'),
+    nunjucks        = require('gulp-nunjucks-html');
     sass            = require('gulp-sass'),
     autoprefixer    = require('gulp-autoprefixer'),
     minifyCSS       = require('gulp-minify-css'),
@@ -44,6 +45,7 @@ var basePath = {
 
 var src = {
     jade:   [basePath.src + 'jade/**/*.jade', '!' + basePath.src + 'jade/layouts/**'],
+    html:   [basePath.src + 'nunjucks/**/*.html', '!' + basePath.src + 'nunjucks/layout.html'],
     sass:   basePath.src + 'assets/sass/',
     js:     basePath.src + 'assets/js/',
     img:    basePath.src + 'assets/img/*',
@@ -52,6 +54,7 @@ var src = {
 
 var dest = {
     jade:   basePath.dest,
+    html:   basePath.dest + 'nunjucks/',
     sass:   basePath.dest + 'css/',
     js:     basePath.dest + 'js/',
     img:    basePath.dest + 'img/'
@@ -85,6 +88,14 @@ gulp.task('jade', function() {
         .pipe(gulp.dest(dest.jade))
         // .pipe(connect.reload());
         .pipe(browserSync.reload({stream:true}));
+});
+
+gulp.task('nunjucks', function() {
+    return gulp.src(src.html)
+        .pipe(nunjucks({
+            searchPaths: ['./src/nunjucks']
+        }))
+        .pipe(gulp.dest(dest.html));
 });
 
 
@@ -202,6 +213,7 @@ gulp.task('report', ['jade', 'sassProd', 'jsProd', 'img'], function () {
 gulp.task('default', ['clean'], function (cb) {
     runSequence([
         'jade',
+        'nunjucks',
         'sass',
         'jshint',
         'js',
