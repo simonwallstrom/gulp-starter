@@ -16,7 +16,6 @@
     "gulp-concat": "^2.6.0",
     "gulp-gh-pages": "^0.5.2",
     "gulp-imagemin": "*",
-    "gulp-jade": "^1.1.0",
     "gulp-jshint": "*",
     "gulp-minify-css": "^1.2.1",
     "gulp-notify": "*",
