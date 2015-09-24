@@ -10,7 +10,7 @@ plugin_gems: []
 linters:
   BangFormat:
     enabled: true
-    space_before_bang: true
+    space_before_bang: false
     space_after_bang: false
 
   BemDepth:
@@ -44,7 +44,7 @@ linters:
 
   ElsePlacement:
     enabled: true
-    style: same_line # or 'new_line'
+    style: new_line # or 'same_line'
 
   EmptyLineBetweenBlocks:
     enabled: true
@@ -75,7 +75,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -107,7 +107,7 @@ linters:
     ignore_parent_selectors: false
 
   PlaceholderInExtend:
-    enabled: true
+    enabled: false
 
   PropertyCount:
     enabled: false
@@ -119,6 +119,7 @@ linters:
     ignore_unspecified: false
     min_properties: 2
     separate_groups: false
+    order: concentric
 
   PropertySpelling:
     enabled: true

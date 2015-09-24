@@ -35,8 +35,8 @@
 @mixin clearfix {
     &:before,
     &:after {
-        content: " ";
         display: table;
+        content: '';
     }
 
     &:after {
@@ -75,55 +75,55 @@
 
     &:after {
         position: absolute;
-        border: solid transparent;
-        content: " ";
         top: auto;
         left: auto;
-        height: 0;
-        width: 0;
         margin: 0;
-        border-color: transparent;
+        border: solid transparent;
         border-width: $arrow-size;
+        border-color: transparent;
+        width: 0;
+        height: 0;
+        content: '';
         pointer-events: none;
     }
 
-    @if $arrow-position == "top" {
+    @if $arrow-position == 'top' {
 
         &:after {
             bottom: 100%;
-            border-bottom-color: $arrow-color;
-            margin-left: (-$arrow-size);
             left: 50%;
+            margin-left: (-$arrow-size);
+            border-bottom-color: $arrow-color;
         }
     }
 
-    @if $arrow-position == "right" {
+    @if $arrow-position == 'right' {
 
         &:after {
-            left: 100%;
-            border-left-color: $arrow-color;
-            margin-top: (-$arrow-size);
             top: 50%;
+            left: 100%;
+            margin-top: (-$arrow-size);
+            border-left-color: $arrow-color;
         }
     }
 
-    @if $arrow-position == "bottom" {
+    @if $arrow-position == 'bottom' {
 
         &:after {
             top: 100%;
-            border-top-color: $arrow-color;
-            margin-left: (-$arrow-size);
             left: 50%;
+            margin-left: (-$arrow-size);
+            border-top-color: $arrow-color;
         }
     }
 
-    @if $arrow-position == "left" {
+    @if $arrow-position == 'left' {
 
         &:after {
-            right: 100%;
-            border-right-color: $arrow-color;
-            margin-top: (-$arrow-size);
             top: 50%;
+            right: 100%;
+            margin-top: (-$arrow-size);
+            border-right-color: $arrow-color;
         }
     }
 }

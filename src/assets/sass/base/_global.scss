@@ -8,15 +8,17 @@
 // -------------------------------------------------------------
 
 // Include border and padding in width
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
 
 body {
-    font-size: $font-size--small;
-    font-family: $sans;
     line-height: $line-height;
     color: $black;
+    font-family: $sans;
+    font-size: $font-size--small;
 
     @include bp(md) {
         font-size: $font-size;
@@ -30,7 +32,7 @@ img {
 
 ul,
 ol {
+    margin: $margin 0;
     padding: 0;
     list-style-position: inside;
-    margin: $margin 0;
 }

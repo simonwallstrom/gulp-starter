@@ -8,9 +8,9 @@
 // -------------------------------------------------------------
 
 // Fonts
-$sans:                      "Helvetica Neue";
-$serif:                     "Georgia";
-$mono:                      "Monaco";
+$sans:                      'Helvetica Neue';
+$serif:                     'Georgia';
+$mono:                      'Monaco';
 
 // Base
 $font-size:                 16px;
@@ -51,10 +51,11 @@ $margin:                    $font-size;
 // -------------------------------------------------------------
 
 $black:                     #222;
-$grey:                      lighten($black, 35%);
+$grey:                      #eee;
+$milk:                      #fafafa;
 $white:                     #fff;
 
-$green:                     green;
+$green:                     #008000;
 
 
 // -------------------------------------------------------------
