@@ -17,6 +17,7 @@
     "gulp-imagemin": "*",
     "gulp-jshint": "*",
     "gulp-minify-css": "^1.2.1",
+    "gulp-minify-html": "^1.0.4",
     "gulp-notify": "*",
     "gulp-nunjucks-html": "^2.0.0",
     "gulp-sass": "^2.1.0-beta",

@@ -14,6 +14,7 @@
 
 var gulp            = require('gulp'),
     nunjucks        = require('gulp-nunjucks-html'),
+    minifyHTML      = require('gulp-minify-html'),
     sass            = require('gulp-sass'),
     scssLint        = require('gulp-scss-lint'),
     autoprefixer    = require('gulp-autoprefixer'),
@@ -38,7 +39,8 @@ var gulp            = require('gulp'),
 
 var basePath = {
     src:    './src/',
-    dest:   './build/'
+    dest:   './build/',
+    prod:   './prod/'
 };
 
 var src = {
@@ -54,6 +56,13 @@ var dest = {
     sass:   basePath.dest + 'css/',
     js:     basePath.dest + 'js/',
     img:    basePath.dest + 'img/'
+};
+
+var prod = {
+    html:   basePath.prod,
+    sass:   basePath.prod + 'css/',
+    js:     basePath.prod + 'js/',
+    img:    basePath.prod + 'img/'
 };
 
 // Deploy
@@ -84,6 +93,16 @@ gulp.task('html', function() {
         .pipe(browserSync.reload({stream:true}));
 });
 
+gulp.task('htmlProd', ['html'], function() {
+    var opts = {
+      conditionals: true,
+      spare:true
+    };
+    return gulp.src(dest.html + '*.html')
+        .pipe(minifyHTML(opts))
+        .pipe(gulp.dest(prod.html));
+});
+
 
 // -------------------------------------------------------------
 // # SASS
@@ -112,7 +131,7 @@ gulp.task('sass', function() {
 gulp.task('sassProd', ['sass'], function() {
     return gulp.src(dest.sass + 'app.css')
         .pipe(minifyCSS())
-        .pipe(gulp.dest(dest.sass));
+        .pipe(gulp.dest(prod.sass));
 });
 
 
@@ -191,6 +210,10 @@ gulp.task('clean', function () {
     return del(basePath.dest + '**');
 });
 
+gulp.task('cleanProd', function () {
+    return del(basePath.prod + '**');
+});
+
 
 // -------------------------------------------------------------
 // # Report
@@ -222,13 +245,13 @@ gulp.task('default', ['clean'], function (cb) {
 // # Production task - run `gulp prod`
 // -------------------------------------------------------------
 
-gulp.task('prod', ['clean'], function (cb) {
+gulp.task('prod', ['cleanProd'], function (cb) {
     runSequence([
-        'html',
-        'sassProd',
-        'img',
-        'browserSync',
-        'report'
+        'htmlProd',
+        'sassProd'
+        // 'img',
+        // 'browserSync',
+        // 'report'
     ], function() {
         console.log(cb);
     });
