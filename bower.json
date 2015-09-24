@@ -1,0 +1,12 @@
+{
+  "name": "gulp-starter",
+  "version": "0.0.0",
+  "homepage": "https://github.com/simonwallstrom/gulp-starter",
+  "authors": [
+    "Simon Wallström <simon.wallstrom@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
