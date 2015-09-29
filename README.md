@@ -5,11 +5,10 @@ A basic boilerplate to start quickly on a static site and deploy to gh-pages.
 ## Features
 
 - Gulp
-- Jade
+- Nunjucks
 - Sass
 - Scss-lint
 - Autoprefixr
-- Browserify
 - BrowserSync
 - JSHint
 - Imagemin
