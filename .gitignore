@@ -3,3 +3,4 @@ dev/
 prod/
 .DS_Store
 bower_components/
+.publish

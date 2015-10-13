@@ -30,7 +30,7 @@ var gulp            = require('gulp'),
     del             = require('del'),
     sizereport      = require('gulp-sizereport'),
     runSequence     = require('run-sequence'),
-    deploy          = require('gulp-gh-pages');
+    ghPages         = require('gulp-gh-pages');
 
 
 // -------------------------------------------------------------
@@ -67,7 +67,7 @@ var prod = {
 
 // Deploy
 var deploy = {
-    path: basePath.dev + '**/*.*',
+    path: basePath.prod + '**/*.*',
     branch: "gh-pages"
 };
 
@@ -94,10 +94,6 @@ gulp.task('html', function() {
 });
 
 gulp.task('htmlProd', ['html'], function() {
-    // var opts = {
-    //   conditionals: true,
-    //   spare:true
-    // };
     return gulp.src(dev.html + '*.html')
         .pipe(minifyHTML())
         .pipe(gulp.dest(prod.html));
@@ -172,19 +168,19 @@ gulp.task('jsProd', ['js'], function() {
 
 gulp.task('img', function () {
     return gulp.src(src.img)
-        .pipe(imagemin({
+        .pipe(cache(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}]
-        }))
+        })))
         .pipe(gulp.dest(dev.img));
 });
 
 gulp.task('imgProd', ['img'], function () {
     return gulp.src(dev.img + '*')
-        .pipe(cache(imagemin({
+        .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}]
-        })))
+        }))
         .pipe(gulp.dest(prod.img));
 });
 
@@ -286,6 +282,7 @@ gulp.task('prod', ['cleanProd'], function (cb) {
 // -------------------------------------------------------------
 
 gulp.task('deploy', function () {
+    return gulp.src(deploy.path)
+        .pipe(ghPages(deploy.branch));
     gulp.src(deploy.path)
-        .pipe(deploy(deploy.branch));
 });

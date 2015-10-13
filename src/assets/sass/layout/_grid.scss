@@ -21,7 +21,7 @@
 }
 
 @include bp(md) {
-    [class$="--md"] {
+    [class*="--md"] {
         float: left;
         padding: 0 $gutter;
     }
@@ -34,7 +34,7 @@
 }
 
 @include bp(lg) {
-    [class$="--lg"] {
+    [class*="--lg"] {
         float: left;
         padding: 0 $gutter;
     }
@@ -47,7 +47,7 @@
 }
 
 @include bp(xl) {
-    [class$="--xl"] {
+    [class*="--xl"] {
         float: left;
         padding: 0 $gutter;
     }
