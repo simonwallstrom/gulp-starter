@@ -8,7 +8,7 @@
 // -------------------------------------------------------------
 
 .clearfix {
-    @extend clearfix;
+    @include clearfix;
 }
 
 .left {
